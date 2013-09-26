@@ -1,7 +1,9 @@
 body{
-    background-color:  white;
+    /*background-color:  white;*/
     font-family:  Helvetica Neue Ultra Light;
     font-size: 0.8em;
+    background-image: url(../www/images/background.png);
+
 }
 
 #bandeau_haut{
@@ -14,5 +16,6 @@ body{
     background-color: #dfdcdc;
     border : 1px solid #e0e0e0;
     padding-bottom : 0px;
+    
 
 }
