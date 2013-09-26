@@ -1,0 +1,18 @@
+body{
+    background-color:  white;
+    font-family:  Helvetica Neue Ultra Light;
+    font-size: 0.8em;
+}
+
+#bandeau_haut{
+    width : 1000px;
+
+
+#page{
+    width : 1000px;
+    margin : auto;
+    background-color: #dfdcdc;
+    border : 1px solid #e0e0e0;
+    padding-bottom : 0px;
+
+}
