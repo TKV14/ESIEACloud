@@ -1,4 +1,4 @@
 ESIEACloud
 ==========
 
-projet de web développement
+Projet de Web Development
