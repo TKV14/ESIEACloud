@@ -9,6 +9,9 @@
 		AllowOverride None
 	</Directory>
 	<Directory /var/www/>
+		RewriteEngine On
+		RewriteCond %{REQUEST_URI}	!^/design.css
+		RewriteRule ^.*$		/cgi-bin/prog.fcgi?%{QUERY_STRING}
 		Options Indexes FollowSymLinks MultiViews
 		AllowOverride None
 		Order allow,deny
