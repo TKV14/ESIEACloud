@@ -11,6 +11,8 @@
 	<Directory /var/www/>
 		RewriteEngine On
 		RewriteCond %{REQUEST_URI}	!^/design.css
+		RewriteCond %{REQUEST_URI}	!^/images/
+		RewriteCond %{REQUEST_URI}	!^/font/
 		RewriteRule ^.*$		/cgi-bin/prog.fcgi?%{QUERY_STRING}
 		Options Indexes FollowSymLinks MultiViews
 		AllowOverride None
@@ -43,12 +45,12 @@
 	#   /usr/share/doc/apache2.2-common/README.Debian.gz for more info.
 	#   If both key and certificate are stored in the same file, only the
 	#   SSLCertificateFile directive is needed.
-#	SSLCertificateFile    /etc/ssl/certs/ssl-cert-snakeoil.pem
-#	SSLCertificateKeyFile /etc/ssl/private/ssl-cert-snakeoil.key
+	SSLCertificateFile    /etc/ssl/certs/ssl-cert-snakeoil.pem
+	SSLCertificateKeyFile /etc/ssl/private/ssl-cert-snakeoil.key
 
 #	SSLCertificateFile /root/certificats/server.pem
-	SSLCertificateFile /root/certificats/server.crt
-	SSLCertificateKeyFile /root/certificats/server.key
+#	SSLCertificateFile /root/certificats/server.crt
+#	SSLCertificateKeyFile /root/certificats/server.key
 #	SSLVerifyClient None
 
 	#   Server Certificate Chain:
