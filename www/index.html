@@ -22,10 +22,13 @@
 
 <div id="form_signin" style="display:none;">
 	<p><h3>Veuillez rentrer votre login et votre mot de passe</h3></p>
-	<form name="form_signin" action="/" method="post">
-	<p><input name="username" type="text" placeholder="Login" /></p>
-	<p><input name="password" type="password" placeholder="Password" /></p>
-	<p><input type="submit" name="submit" value="Valider" /></form></p>
+	<form name="form_signin" action="/" method="post" onsubmit="return Verif_signin(this)">
+	<center>
+	<p><input name="login" type="text" placeholder="Login" size="40"/></p>
+	<p><input name="password" type="password" placeholder="Mot de passe" size="40" /></p>
+	<p><input type="submit" name="submit" value="Valider" /></p>
+	</center>
+	</form>
 </div>
 
 <div id="bouton_signup" class="bouton2">
@@ -36,11 +39,14 @@
 
 <div id="form_signup" style="display:none;">
 	<p><h3>Veuillez rentrer les informations suivantes pour créer votre compte</h3></p>
-	<form name="form_signup" action="/?=inscription" method="post">
-	<p><input name="username" type="text" placeholder="Login" /> Login</p>
-	<p><input name="password" type="password" placeholder="Password" /> Mot de passe</p>
-	<p><input name="password" type="password" placeholder="Password" /> Confirmation du mot de passe</p>
-	<input type="submit" name="submit" value="Valider" /></form>
+	<form name="form_signup" action="/?=inscription" method="post" onsubmit="return Verif_signup(this)">
+	<center>
+	<p><input name="login" type="text" placeholder="Login" size="40"/></p>
+	<p><input id="password" name="password" type="password" placeholder="Mot de passe" size="40" /></p>
+	<p><input id="password_confirm" name="password_confirm" type="password" placeholder="Confirmez votre mot de passe" size="40" /></p>
+	<input type="submit" name="submit" value="Valider" />
+	</center>
+	</form>
 </div>
 
 </div>
