@@ -2,8 +2,8 @@
 #define _SQL_H
 
 #define DBNAME "postgres"
-#define DBLOGIN "cloud"
-#define DBPASS "dbpass"
+#define DBLOGIN "postgres"
+#define DBPASS "postgres"
 #define DBHOST "localhost"
 #define DBPORT "5432"
 
