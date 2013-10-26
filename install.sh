@@ -1,6 +1,6 @@
 #!/bin/bash
 /usr/bin/yes | sudo apt-get update
-/usr/bin/yes | sudo apt-get install apache2 postgresql libfcgi-dev
+/usr/bin/yes | sudo apt-get install apache2 postgresql libfcgi-dev libpq-dev
 sudo a2enmod ssl
 sudo rm -Rf /var/www/*
 sudo cp -R www/ /var/
