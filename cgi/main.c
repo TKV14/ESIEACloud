@@ -25,20 +25,35 @@ int main(void)
 
 int userId()
 {
-	char *cookie, login[64], password[64], rawLogin[512], rawPassword[512];
+	char login[64], password[64], rawLogin[512], rawPassword[512], authType[16];
+	char encryptPassword[64], sessionCookie[64];
+	char *cookie, *queryString;
 	actualSession->login[0] = '\0';
 	actualSession->header[0] = '\0';
 
 	cookie = getenv("HTTP_COOKIE");
 	if(cookie != NULL)
 	{
-		sscanf(cookie ,"Session=%s", actualSession->login);
-		fprintf(stderr, "Non null cookie Login: %s\n", actualSession->login);
-		return 1;
+		sscanf(cookie ,"Session=%s", sessionCookie);
+		if(validCookie(sessionCookie) == 1)
+		{
+			fprintf(stderr, "Non null cookie Login: %s\n", actualSession->login);
+			return 1;
+		}
+		else
+		{
+			fprintf(stderr, "Cookie non valide\n");
+			selectPage("index");
+			return -1;
+		}
 	}
 	else
 	{
-		if(scanf("login=%[^&]&password=%s", rawLogin, rawPassword) == 2)
+		queryString = getenv("QUERY_STRING");
+		if(sscanf(queryString, "auth=%s", authType) != 1)
+			return 2;
+
+		if(scanf("login=%[^&]&password=%[^&]", rawLogin, rawPassword) == 2)
 		{
 			rawToText(rawLogin, login);
 			rawToText(rawPassword, password);
@@ -56,16 +71,35 @@ int userId()
 				return -1;
 			}
 
-			encryptSha256(password);
-
-			if(authLogin(login, password) == 1)
+			if(strcmp(authType, "login") == 0)
 			{
-				sprintf(actualSession->login, "%s", login);
-				return 0;
+				encryptSha256(password, NULL, NULL, encryptPassword);
+				if(authLogin(login, encryptPassword) == 1)
+				{
+					sprintf(actualSession->login, "%s", login);
+					return 0;
+				}
+				else
+				{
+					fprintf(stderr, "Auth Failed\n");
+					selectPage("index");
+					return 2;
+				}
+			}
+			else if(strcmp(authType, "inscription") == 0)
+			{
+				encryptSha256(password, NULL, NULL, encryptPassword);
+				if(createUser(login, encryptPassword) == 0)
+				{
+					sprintf(actualSession->login, "%s", login);
+					return 0;
+				}
+				else
+					return 2;
 			}
 			else
 			{
-				fprintf(stderr, "Auth Failed\n");
+				fprintf(stderr, "c'est pas bon\n");
 				return 2;
 			}
 		}
@@ -74,6 +108,26 @@ int userId()
 	}
 
 	return 1;
+}
+
+int createUser(char *login, char *password)
+{
+	char dossier[256];
+
+	if(addUser(login, password) == -1)
+		return -1;
+
+	sprintf(dossier, "/ESIEACloud/%s/", login);
+
+	fprintf(stderr, "Dossier: %s\n", dossier); 
+
+	if(mkdir(dossier, S_IWUSR | S_IRUSR | S_IXUSR) == -1)
+	{
+		fprintf(stderr, "%s", strerror(errno));
+		return -2;
+	}
+
+	return 0;
 }
 
 int checkString(char *string, int maxLength)

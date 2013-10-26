@@ -1,14 +1,15 @@
 #include "main.h"
 
-void encryptSha256(const char *chaine, const char *salt, const char *alea)
+void encryptSha256(const char *chaine, const char *salt, const char *alea, char *encryptData)
 {
 	int i;
+	char tmp[3];
 	char buffer[512];
 	unsigned char out[32];
 	SHA256_CTX ctx;
 
 	memset(buffer, '\0', 64);
-	strcpy(buffer, in);
+	strcpy(buffer, chaine);
 
 	SHA256_Init(&ctx);
 
@@ -20,12 +21,16 @@ void encryptSha256(const char *chaine, const char *salt, const char *alea)
 
 	SHA256_Final(out, &ctx);
 
-	fprintf(stderr, "Sha: ");
+	encryptData[0] = '\0';
 
 	for(i=0; i<32; i++)
 	{
-		fprintf(stderr, "%02x", out[i]);
+		tmp[0] = '\0';
+		tmp[1] = '\0';
+		tmp[2] = '\0';
+		sprintf(tmp, "%02x", out[i]);
+		strcat(encryptData, tmp);
 	}
 
-	fprintf(stderr, "\n");
+	encryptData[64] = '\0';
 }

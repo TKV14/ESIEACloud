@@ -3,6 +3,6 @@
 
 #include <openssl/sha.h>
 
-void encryptSha256(const char *in);
+void encryptSha256(const char *chaine, const char *salt, const char *alea, char *encryptData);
 
 #endif /* _CRYPTO_H */

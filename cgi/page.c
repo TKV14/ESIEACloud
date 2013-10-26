@@ -13,6 +13,8 @@ void selector()
 			selectPage(request);
 		else if(sscanf(queryString, "file=%s", request) == 1)
 			selectFile(request);
+		else if(sscanf(queryString, "auth=%s", request) == 1)
+			validAuth(request);
 		else
 			fprintf(stderr, "ça merdouille sur la query string\n");
 	}
@@ -45,7 +47,7 @@ void selectPage(char *request)
 
 void generatePage(char *page)
 {
-	char tmp[1024], data[65536];
+	char tmp[1024], data[65536], userPath[2048];
 	FILE *file = NULL;
 
 	data[0] = '\0';
@@ -67,7 +69,8 @@ void generatePage(char *page)
 	{
 		if(strstr(tmp, "<filelist>") != NULL)
 		{
-			strcat(data, print_folder("/ESIEACloud/tkv"));
+			sprintf(userPath, "/ESIEACloud/%s", actualSession->login);
+			strcat(data, print_folder(userPath));
 		}
 		else if(strstr(tmp, "</filelist>") != NULL)
 		{
@@ -86,8 +89,14 @@ void generatePage(char *page)
 
 void createCookie()
 {
+	char sessionID[64];
+
+	encryptSha256(actualSession->login, NULL, NULL, sessionID);
+
+	addCookie(actualSession->login, sessionID);
+
 	printf("Content-Type: text/html\r\n");
-	printf("Set-Cookie: Session=%s;\r\n", actualSession->login);
+	printf("Set-Cookie: Session=%s;\r\n", sessionID);
 //	printf("Location: /\r\n");
 //	printf("\r\n");
 //	fflush(stdout);
@@ -149,4 +158,18 @@ void sendHeader()
 {
 	printf("%s", actualSession->header);
 	fflush(stdout);
+}
+
+void validAuth(char *authType)
+{
+	if((strcmp(authType, "login") == 0) && (actualSession->login[0] != '\0'))
+		selectPage("main");
+
+	if(strcmp(authType, "inscription") == 0)
+	{
+		if(actualSession->login[0] == '\0')
+			selectPage("index");
+		else
+			selectPage("main");
+	}
 }

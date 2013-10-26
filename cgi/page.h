@@ -2,12 +2,13 @@
 #define _PAGE_H
 
 void selector();
-void selectPage();
+void selectPage(char *request);
 void generatePage();
 void createCookie();
 void sendPage(char *page);
 void sendFile(FILE *file);
 void selectFile(char *filename);
 void sendHeader();
+void validAuth(char *authType);
 
 #endif /* _PAGE_H */

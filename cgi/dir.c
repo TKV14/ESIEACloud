@@ -24,7 +24,7 @@ char *print_folder(char *path)
 
 	while(contenu[i][0] != '\0')
 	{
-		sprintf(tmp, "<div><a href=\"/?file=%s\">%s</a></div>\n", contenu[i], contenu[i]);
+		sprintf(tmp, "<TR><TH><a href=\"/?file=%s\">%s</a></TH><TH></TH><TH></TH><TH></TH></TR>\n", contenu[i], contenu[i]);
 		strcat(retour, tmp);
 		i++;
 	}

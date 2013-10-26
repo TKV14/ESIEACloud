@@ -33,7 +33,7 @@
 <div class="element2">
 <div id="form_signin" class="form_signxx" style="display:none;">
 	<p><h3>Veuillez rentrer votre login et votre mot de passe</h3></p>
-	<form name="form_signin" action="/" method="post" onsubmit="return Verif_signin(this)">
+	<form name="form_signin" action="/?auth=login" method="post" onsubmit="return Verif_signin(this)">
 	<center>
 	<p><input name="login" type="text" placeholder="Login" size="40"/></p>
 	<p><input name="password" type="password" placeholder="Mot de passe" size="40" /></p>
@@ -44,7 +44,7 @@
 
 <div id="form_signup" class="form_signxx" style="display:none;">
 	<p><h3>Veuillez rentrer les informations suivantes pour créer votre compte</h3></p>
-	<form name="form_signup" action="/?=inscription" method="post" onsubmit="return Verif_signup(this)">
+	<form name="form_signup" action="/?auth=inscription" method="post" onsubmit="return Verif_signup(this)">
 	<center>
 	<p><input name="login" type="text" placeholder="Login" size="40"/></p>
 	<p><input id="password" name="password" type="password" placeholder="Mot de passe" size="40" /></p>
