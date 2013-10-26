@@ -1,49 +1,62 @@
 body {
-    /*background-color:  white;*/
-    font-size: 1em;
-    background-repeat: repeat-y;
+    /*background-color :  white;*/
+    font-family : "Ultralight";
+    font-size : 1em;
+    text-align : center;
+    background-image : url('./ressources/images/background2.jpg');*/
 }
 
 #page {
-    width : 1000px;
-    height : 700px;
+    width : 1200px;
+    height : 1000px;
     margin : auto;
-    background-image: url('./ressources/images/background.png');
-    border : 1px solid #e0e0e0;
-    padding-bottom : 0px;
-}
-
-#form_signin {
-	background: #77B5FE;
-	padding: 15px;
-	border: 20px solid white;
-	position: fixed;
-	top: 55%; 
-	left: 30%;
-	box-shadow: 0px 0px 30px #000;	
-	border-radius: 50px;
-	z-index: 1;
-	font-family: helvetica, sans-serif;
-	color : #22427C;
 	}
 
-#form_signup {
-	background: #77B5FE;
-	padding: 15px;
-	border: 20px solid white;
-	float: left;
-	position: fixed;
-	top: 55%; 
-	left: 25%;
-	box-shadow: 0px 0px 30px #000;	
-	border-radius: 50px;
-	z-index: 1;
-	font-family: helvetica, sans-serif;
+.titre {
+    font-family : "Ultralight";
+	font-size : 8em;
+	color : white;
+	}
+	
+.form_signxx {
+	background : #77B5FE;
+	padding : 15px;
+	border : 20px solid white;
+	margin : auto;
+	position : fixed;
+	top : 55%;
+	left : 27%;
+	box-shadow : 0px 0px 30px #000;	
+	border-radius : 50px;
+	z-index : 1;
+	font-family : helvetica, sans-serif;
 	color : #22427C;
-}
-
-
-
+	}
+	
+.form_upload {
+	background : #77B5FE;
+	padding : 15px;
+	border : 20px solid white;
+	margin : auto;
+	position : fixed;
+	top : 55%;
+	left : 27%;
+	box-shadow : 0px 0px 30px #000;	
+	border-radius : 50px;
+	z-index : 1;
+	font-family : helvetica, sans-serif;
+	color : #22427C;
+	}	
+	
+.tableau {
+	position : fixed;
+	top : 45%;
+	left : 17%;
+	color : black;
+	font-size : 1.2em;
+	font-family : arial, sans serif;
+	}
+	
 @font-face {
     font-family: "Ultralight";
     src: url('./ressources/font/helvetica_neue_ultralight.ttf'),
@@ -52,40 +65,58 @@ body {
     font-style: normal;
 }
 
+th {
+	width : 200px;
+	background : grey;
+	}
+	
+tr {
+	background : white;
+	}
+	
+	
+.element {
+	margin-left : 27%;
+	top : 5%;
+	position : relative;
+	text-align : center;
+	}
+
+
 .bouton a{ 
-	font-family: "Ultralight";
-	font-size: 70px;
-	top: 35%;
+	margin-right : 100px;
 	float : left;
-	left : 25%;
-	position : fixed;
-	background : transparent;
-	color: #FFFFFF;
-	padding: 25px 30px 35px;
-	text-decoration: none;
-	line-height: 0.5;
+	font-size : 70px;
+	color : #FFFFFF;
+	padding : 0px 10px 35px;
+	text-decoration : none;
+	line-height : 0.5;
 }	
 
 .bouton a:hover {
-  	border-bottom: solid 1px white;
+  	border-bottom : solid 1px white;
 }
 
+.element2 {
+	margin-left : 13%;
+	width : 1000px;
+	top : 5%;
+	position : relative;
+	text-align : center;
+	}
+
 .bouton2 a{ 
-	font-family: "Ultralight";
-	font-size: 70px;
-	top: 35%;
+	font-size : 50px;
+	margin-left : 50px;
 	float : left;
-	left : 50%;
-	position : fixed;
-	background : transparent;
-	color: #FFFFFF;
-	padding: 25px 30px 35px;
-	text-decoration: none;
-	line-height: 0.5;
+	color : #FFFFFF;
+	padding : 0px 20px 10px;
+	text-decoration : none;
+	line-height : 0.5;
 }	
 
 .bouton2 a:hover {
-  	border-bottom: solid 1px white;
+  	border-bottom : solid 1px white;
 }
 
 h3 {

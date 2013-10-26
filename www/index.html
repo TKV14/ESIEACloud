@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <head>
-	<title>ESIEA Cloud</title>
+	<title>ESIEA Cloud - Accueil</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     	
         <link href="design.css" rel="stylesheet" type="text/css" />
@@ -12,15 +12,26 @@
 
 <body>
 
-<div id="page">
    
-<div id="bouton_signin" class="bouton">
-<p>
+<div id="page">
+
+ 	<div class="titre">
+   	ESIEA CLOUD
+   	</div>  
+
+<div class="element">
+
+<p id="bouton_signin" class="bouton">
 <a href="#" onclick="signin(); return false;">Sign In</a>
+</p>
+
+<p id="bouton_signup" class="bouton">
+<a href="#" onclick="signup();">Sign Up</a>
 </p>
 </div>
 
-<div id="form_signin" style="display:none;">
+<div class="element2">
+<div id="form_signin" class="form_signxx" style="display:none;">
 	<p><h3>Veuillez rentrer votre login et votre mot de passe</h3></p>
 	<form name="form_signin" action="/" method="post" onsubmit="return Verif_signin(this)">
 	<center>
@@ -31,13 +42,7 @@
 	</form>
 </div>
 
-<div id="bouton_signup" class="bouton2">
-<p>
-<a href="#" onclick="signup();">Sign Up</a>
-</p>
-</div>
-
-<div id="form_signup" style="display:none;">
+<div id="form_signup" class="form_signxx" style="display:none;">
 	<p><h3>Veuillez rentrer les informations suivantes pour créer votre compte</h3></p>
 	<form name="form_signup" action="/?=inscription" method="post" onsubmit="return Verif_signup(this)">
 	<center>
@@ -48,7 +53,7 @@
 	</center>
 	</form>
 </div>
-
+</div>
 </div>
 </body>
 

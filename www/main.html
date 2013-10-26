@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<head>
+	<title>ESIEA Cloud - Page de Gestion</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    	
+        <link href="design.css" rel="stylesheet" type="text/css" />
+		
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<script src="./ressources/js/scripts.js"></script>
+</head>
+
+<body>
+
+<div id="page">
+
+ 	<div class="titre">
+   	ESIEA CLOUD
+   	</div>  
+
+<div class="element2">
+
+<p id="bouton_gestion" class="bouton2">
+<a href="#" onclick="upload()">Mes Fichiers</a>
+</p>
+
+<p id="bouton_upload" class="bouton2">
+<a href="#" onclick="form_upload()">Upload</a>
+</p>
+
+<p id="bouton_deco" class="bouton2">
+<a href="index.html">Log Out</a>
+</p>
+</div>
+
+<div id="tableau" class="tableau">
+<p>
+<TABLE BORDER="1"> 
+  <CAPTION><h1>Liste des fichiers</h1></CAPTION> 
+  <TR> 
+  <fileselect>
+ <TH> File </TH> 
+ <TH> Upload Date </TH> 
+  <TH> Download </TH>
+ <TH> Delete </TH> 
+  </TR> 
+  <TR> 
+ <TD> filename </TD> 
+ <TD> uploaddate </TD> 
+ <TD> Download </TD>
+ <TD> <img src="./ressources/images/delete.png"></img> </TD> 
+  </TR> 
+  <TR> 
+ <TD> filename </TD> 
+ <TD> uploaddate </TD> 
+ <TD> Download </TD>
+ <TD> <img src="./ressources/images/delete.png"></img>  </TD> 
+  </TR> 
+  <TR> 
+ <TD> filename </TD> 
+ <TD> uploaddate </TD>
+ <TD> Download </TD> 
+ <TD> <img src="./ressources/images/delete.png"></img>  </TD> 
+  </fileselect>
+  </TR> 
+</TABLE> 
+</p>
+</div>
+</div>
+
+
+<!--
+<div id="form_upload" class="form_upload" style="display:none;">
+	<p><h3>Veuillez rentrer votre login et votre mot de passe</h3></p>
+	<form name="form_upload" action="/" method="post" onsubmit="return Verif_upload(this)">
+	<center>
+	<p><input name="login" type="text" placeholder="Login" size="40"/></p>
+	<p><input name="password" type="password" placeholder="Mot de passe" size="40" /></p>
+	<p><input type="submit" name="submit" value="Valider" /></p>
+	</center>
+	</form>
+</div>
+-->
+
+</div>
+
+</div>
+</body>
+
+</html>
