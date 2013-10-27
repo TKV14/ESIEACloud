@@ -61,7 +61,7 @@ void upfile()
 	char tmp[1000000];
 	char filename[256], filepath[512];
 	char null[512];
-	char c1, c2;
+	char c1, c2, c3;
 	FILE *file = NULL;
 
 	fgets(tmp, size, stdin);
@@ -93,7 +93,17 @@ void upfile()
 			{
 				fread(&c2, sizeof(char), 1, stdin);
 				if(c2 == '\n')
-					break;
+				{
+					fread(&c3, sizeof(char), 1, stdin);
+					if(c3 == '-')
+						break;
+					else
+					{
+						fwrite(&c1, sizeof(char), 1, file);
+						fwrite(&c2, sizeof(char), 1, file);
+						fwrite(&c3, sizeof(char), 1, file);
+					}
+				}
 				else
 				{
 					fwrite(&c1, sizeof(char), 1, file);
