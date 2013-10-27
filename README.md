@@ -17,7 +17,7 @@ Chaque utilisateur peut se connecter via l'interface web en cliquant sur "Sign I
 
 Les deux utilisateurs contiennent par défaut 2 fichiers dans leurs dossier personnel, 1 image et 1 fichier texte, afin de servir d'exemple.
 
-Il est possible sur la page de gestion d'upload un fichier (encore en développement) et de se déconnecter.
+Il est possible sur la page de gestion d'upload un fichier et de se déconnecter.
 
 Pour le programme nous avons décidé de coder avec le langage C qui est rapide et qui permet de tout contrôler.
 Pour la base de données nous avons utilisé la base de données PostgreSQL, qui est libre et performante, elle comprend aussi une librairie de développement en C.
