@@ -89,6 +89,11 @@ void sendSqlCommand(PGconn *conn, char *command)
 
 	res = PQexec(conn, command);
 
+	if(PQstatus(conn) == CONNECTION_OK)
+		fprintf(stderr, "connecte\n");
+	else
+		fprintf(stderr, "non connecte\n");
+
 	PQclear(res);
 }
 
