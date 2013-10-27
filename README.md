@@ -13,13 +13,13 @@ Le but de ce projet est de créer un mini-cloud.
 
 Chaque utilisateur peut se connecter via l'interface web en cliquant sur "Sign in"
 
-Les deux utilisateurs contiennent par défault 2 fichiers dans leurs dossier personnel, 1 image et 1 fichier text.
+Les deux utilisateurs contiennent par défaut 2 fichiers dans leurs dossier personnel, 1 image et 1 fichier texte.
 
-La deconnexion ne marche pas encore, pour se déconnecter, il suffit de supprimer le cookie.
+La déconnexion ne marche pas encore, pour se déconnecter, il suffit de supprimer le cookie.
 
 
-Pour le programme nous avons décider de coder avec le langage C qui est rapide et qui permet de tout controller.
-Pour la base de données nous avons utiliser la base de données Postgres, qui est libre et performante, elle comprend aussi une librairie de developpement en C.
-Nous avons décider de ne pas stocker les mot de passe dans la base de donnée, car cela peut être dansgeureux. Nous avons choisi de ne stocker que des hash des mots de passes, pour ce faire nous avons utiliser l'algorythme Sha-256 qui est réputé sûre.
-Pour les cookie on stocke un hash du login, cette fonction peut être amélioré en rajoutant facilement une graine dans la fonction de hash. Nous stockons la même valeur dans la base de donnée, et nous comparons les 2 valeurs.
-Pour l'interface web nous avons utiliser les technologie html et javascript.
+Pour le programme nous avons décidé de coder avec le langage C qui est rapide et qui permet de tout contrôler.
+Pour la base de données nous avons utilisé la base de données Postgre, qui est libre et performante, elle comprend aussi une librairie de développement en C.
+Nous avons décidé de ne pas stocker les mots de passe dans la base de données, car cela peut être dangereux. Nous avons choisi de ne stocker que des hash des mots de passe, pour ce faire nous avons utilisé l'algorithme Sha-256 qui est réputé sûr.
+Pour les cookies on stocke un hash du login, cette fonction peut être améliorée en rajoutant facilement une graine dans la fonction de hash. Nous stockons la même valeur dans la base de données, et nous comparons les 2 valeurs.
+Pour l'interface web nous avons utilisé les technologies html, css et javascript.
