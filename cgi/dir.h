@@ -7,5 +7,6 @@
 
 char *print_folder(char *path);
 void read_folder(char *path, char **contenu);
+void upfile();
 
 #endif /* _DIR_H */

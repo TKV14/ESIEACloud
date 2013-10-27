@@ -55,6 +55,8 @@ int userId()
 				}
 			}
 
+			upfile();
+
 			return 1;
 		}
 		else

@@ -54,3 +54,55 @@ void read_folder(char *path, char **contenu)
 		}
 	}
 }
+
+void upfile()
+{
+	int size = 1000000;
+	char tmp[1000000];
+	char filename[256], filepath[512];
+	char null[512];
+	char c1, c2;
+	FILE *file = NULL;
+
+	fgets(tmp, size, stdin);
+	fgets(tmp, size, stdin);
+
+	if(sscanf(tmp, "%s %s %s filename=\"%[^\"]", null, null, null, filename) == 4)
+	{
+		fprintf(stderr, "Felicitaion, c'est un beau fichier: %s\n", filename);
+		fgets(tmp, size, stdin);
+
+		sprintf(filepath, "/ESIEACloud/%s/%s", actualSession->login, filename);
+		file = fopen(filepath, "w+");
+
+		while(1)
+		{
+			fread(&c1, sizeof(char), 1, stdin);
+			if(c1 == '\r')
+			{
+				fread(&c2, sizeof(char), 1, stdin);
+				if(c2 == '\n')
+					break;
+			}
+		}
+
+		while(1)
+		{
+			fread(&c1, sizeof(char), 1, stdin);
+			if(c1 == '\r')
+			{
+				fread(&c2, sizeof(char), 1, stdin);
+				if(c2 == '\n')
+					break;
+				else
+				{
+					fwrite(&c1, sizeof(char), 1, file);
+					fwrite(&c2, sizeof(char), 1, file);
+				}
+			}
+			else
+				fwrite(&c1, sizeof(char), 1, file);
+		}
+
+	}
+}
