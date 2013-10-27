@@ -7,7 +7,8 @@
         <link href="design.css" rel="stylesheet" type="text/css" />
 		
 		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-		<script src="./ressources/js/scripts.js"></script>
+		<script src="./ressources/js/scripts2.js"></script>
+
 </head>
 
 <body>
@@ -21,11 +22,11 @@
 <div class="element2">
 
 <p id="bouton_gestion" class="bouton2">
-<a href="#" onclick="upload()">Mes Fichiers</a>
+<a href="#" onclick="liste_fichiers();">Mes Fichiers</a>
 </p>
 
 <p id="bouton_upload" class="bouton2">
-<a href="#" onclick="form_upload()">Upload</a>
+<a href="#" onclick="form_upload();">Upload</a>
 </p>
 
 <p id="bouton_deco" class="bouton2">
@@ -50,21 +51,22 @@
 </div>
 </div>
 
-
-<!--
 <div id="form_upload" class="form_upload" style="display:none;">
-	<p><h3>Veuillez rentrer votre login et votre mot de passe</h3></p>
-	<form name="form_upload" action="/" method="post" onsubmit="return Verif_upload(this)">
+	<h3>Sélectionner le fichier à héberger sur votre cloud</h3>
+	<form method="post" action="/" enctype="multipart/form-data">
 	<center>
-	<p><input name="login" type="text" placeholder="Login" size="40"/></p>
-	<p><input name="password" type="password" placeholder="Mot de passe" size="40" /></p>
+    <input type="file" name="fichier"/>
+	<p><input type="hidden" name="MAX_FILE_SIZE" value="1000000000" /></p>
 	<p><input type="submit" name="submit" value="Valider" /></p>
 	</center>
 	</form>
 </div>
--->
 
 </div>
+
+<footer>
+Arthur CLOUET - ESIEA CLOUD © 2013 - Nicolas LOUIS
+</footer>
 
 </div>
 </body>
