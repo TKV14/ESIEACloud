@@ -2,20 +2,23 @@
 
 int main(void)
 {
+	int retour;
 	actualSession = malloc(sizeof(session));
 
 	while(FCGI_Accept() >= 0)
 	{
-		switch(userId())
+		switch((retour = userId()))
 		{
 			case 0:
 				createCookie();
 				selectPage("main");
 				break;
-			case -1:
 			case 1:
-			case 2:
 				selector();
+				break;
+			case -1:
+			case 2:
+				selectPage("index");
 				break;
 		}
 	}
@@ -25,8 +28,7 @@ int main(void)
 
 int userId()
 {
-	char login[64], password[64], rawLogin[512], rawPassword[512], authType[16];
-	char encryptPassword[64], sessionCookie[64];
+	char sessionCookie[64], authType[16];
 	char *cookie, *queryString;
 	actualSession->login[0] = '\0';
 	actualSession->header[0] = '\0';
@@ -38,74 +40,96 @@ int userId()
 		if(validCookie(sessionCookie) == 1)
 		{
 			fprintf(stderr, "Non null cookie Login: %s\n", actualSession->login);
+			queryString = getenv("QUERY_STRING");
+			if(sscanf(queryString, "auth=%s", authType) == 1)
+			{
+				if(strcmp(authType, "logout") == 0)
+				{
+					if(actualSession->login[0] != '\0')
+					{
+						deleteCookie();
+						actualSession->login[0] = '\0';
+					}
+					selectPage("index");
+					return 1;
+				}
+			}
+
 			return 1;
 		}
 		else
 		{
 			fprintf(stderr, "Cookie non valide\n");
-			selectPage("index");
-			return -1;
+			return auth();
 		}
 	}
 	else
+		return auth();
+
+	return 1;
+}
+
+int auth()
+{
+	char login[64], password[64], encryptPassword[64], rawLogin[512], rawPassword[512], authType[16];
+	char *queryString;
+
+	queryString = getenv("QUERY_STRING");
+	if(sscanf(queryString, "auth=%s", authType) != 1)
+		return 2;
+
+	if(scanf("login=%[^&]&password=%[^&]", rawLogin, rawPassword) == 2)
 	{
-		queryString = getenv("QUERY_STRING");
-		if(sscanf(queryString, "auth=%s", authType) != 1)
-			return 2;
+		rawToText(rawLogin, login);
+		rawToText(rawPassword, password);
 
-		if(scanf("login=%[^&]&password=%[^&]", rawLogin, rawPassword) == 2)
+		fprintf(stderr, "Login: %s, Pass: %s\n", login, password);
+
+		if(checkString(login, 64) != 1)
 		{
-			rawToText(rawLogin, login);
-			rawToText(rawPassword, password);
+			fprintf(stderr, "Probleme Login\n");
+			return -1;
+		}
+		if(checkString(password, 64) != 1)
+		{
+			fprintf(stderr, "Probleme password\n");
+			return -1;
+		}
 
-			fprintf(stderr, "Login: %s, Pass: %s\n", login, password);
-
-			if(checkString(login, 64) != 1)
+		if(strcmp(authType, "login") == 0)
+		{
+			encryptSha256(password, NULL, NULL, encryptPassword);
+			if(authLogin(login, encryptPassword) == 1)
 			{
-				fprintf(stderr, "Probleme Login\n");
-				return -1;
-			}
-			if(checkString(password, 64) != 1)
-			{
-				fprintf(stderr, "Probleme password\n");
-				return -1;
-			}
-
-			if(strcmp(authType, "login") == 0)
-			{
-				encryptSha256(password, NULL, NULL, encryptPassword);
-				if(authLogin(login, encryptPassword) == 1)
-				{
-					sprintf(actualSession->login, "%s", login);
-					return 0;
-				}
-				else
-				{
-					fprintf(stderr, "Auth Failed\n");
-					selectPage("index");
-					return 2;
-				}
-			}
-			else if(strcmp(authType, "inscription") == 0)
-			{
-				encryptSha256(password, NULL, NULL, encryptPassword);
-				if(createUser(login, encryptPassword) == 0)
-				{
-					sprintf(actualSession->login, "%s", login);
-					return 0;
-				}
-				else
-					return 2;
+				sprintf(actualSession->login, "%s", login);
+				return 0;
 			}
 			else
 			{
-				fprintf(stderr, "c'est pas bon\n");
+				fprintf(stderr, "Auth Failed\n");
+				selectPage("index");
 				return 2;
 			}
 		}
+		else if(strcmp(authType, "inscription") == 0)
+		{
+			encryptSha256(password, NULL, NULL, encryptPassword);
+			if(createUser(login, encryptPassword) == 0)
+			{
+				sprintf(actualSession->login, "%s", login);
+				return 0;
+			}
+			else
+				return 2;
+		}
 		else
+		{
+			fprintf(stderr, "c'est pas bon\n");
 			return 2;
+		}
 	}
+	else
+		return 2;
 
 	return 1;
 }

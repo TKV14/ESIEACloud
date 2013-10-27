@@ -16,7 +16,10 @@ void selector()
 		else if(sscanf(queryString, "auth=%s", request) == 1)
 			validAuth(request);
 		else
+		{
 			fprintf(stderr, "ça merdouille sur la query string\n");
+			selectPage("");
+		}
 	}
 	else
 	{

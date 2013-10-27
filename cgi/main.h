@@ -19,6 +19,7 @@ typedef struct infos
 typedef infos* session;
 
 int userId();
+int auth();
 int createUser(char *login, char *password);
 int checkString(char *string, int maxLength);
 int rawToText(char *raw, char *out);

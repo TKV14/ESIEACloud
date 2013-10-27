@@ -13,6 +13,7 @@ int authLogin(char *login, char *password);
 int addUser(char *login, char *password);
 void addCookie(char *login, char *cookie);
 int validCookie(char *cookie);
+void deleteCookie();
 void sendSqlCommand(PGconn *conn, char *command);
 PGconn *connectSqlDb();
 
