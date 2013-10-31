@@ -4,7 +4,9 @@ ESIEACloud
 Projet de Web Development
 Arthur CLOUET et Nicolas LOUIS
 
-Pour l'installation : se connecter en root et lancer le script install.sh.
+Pour l'installation : il faut lancer le script install.sh en root.
+Tapez : sudo ./install.sh
+Entrer le mot de pass admin et attendre la fin de l'installation, a la fin le script donnera l'adresse ip de la machine sur le réseau local.
 
 Le système contient de base 2 utilisateurs :
 	login : Martin		password : pass
