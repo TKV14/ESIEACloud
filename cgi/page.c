@@ -13,6 +13,8 @@ void selector()
 			selectPage(request);
 		else if(sscanf(queryString, "file=%s", request) == 1)
 			selectFile(request);
+		else if(sscanf(queryString, "option=delete&file=%s", request) == 1)
+			deleteFile(request);
 		else if(sscanf(queryString, "auth=%s", request) == 1)
 			validAuth(request);
 		else
@@ -114,7 +116,7 @@ void sendPage(char *page)
 void selectFile(char *filename)
 {
 	int filesize;
-	char path[255];
+	char path[1024];
 	FILE *file;
 	if(filename == NULL)
 		return;
@@ -145,6 +147,18 @@ void selectFile(char *filename)
 
 	sendHeader();
 	sendFile(file);
+}
+
+void deleteFile(char *filename)
+{
+	char path[1024];
+
+	sprintf(path, "/ESIEACloud/%s/%s", actualSession->login, filename);
+
+	if(remove(path) == -1)
+		fprintf(stderr, "Error: %s\n", strerror(errno));
+
+	selectPage("main");
 }
 
 void sendFile(FILE *file)

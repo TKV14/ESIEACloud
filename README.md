@@ -23,6 +23,8 @@ Pour le programme nous avons décidé de coder avec le langage C qui est rapide 
 Pour la base de données nous avons utilisé la base de données PostgreSQL, qui est libre et performante, elle comprend aussi une librairie de développement en C.
 
 Nous avons décidé de ne pas stocker les mots de passe dans la base de données, car cela peut être dangereux. Nous avons choisi de ne stocker que des hash des mots de passe, pour ce faire nous avons utilisé l'algorithme Sha-256 qui est réputé sûr.
-Pour les cookies on stocke un hash du login, cette fonction peut être améliorée en rajoutant facilement une graine dans la fonction de hash. Nous stockons la même valeur dans la base de données, et nous comparons les 2 valeurs.
+Pour les cookies on stocke un hash du login. Nous stockons la même valeur dans la base de données, et nous comparons les 2 valeurs.
+Notre fonction de hashage utilise par default un "salt" définie par SALT dans crypto.h. En plus de ce hash par défault l'utilisateur peut lors de l'appel à la fonction de hashage, définir son "salt" perso, ainsi qu'une chaine de caractère supplémentaire, qui seront pris en compte dans le calcule du hash. Ceci permet de mieux résisté aux attaque par "rainbow table".
+Pour les champs laisser libre à l'utilisateur, notre programme vérifie que les chaines de caractères entrées ne sont pas potentiellement dangeureuse. (Exemple: suppression de certain caractères afin de bloquer les attaques par injection sql)
 
 Pour l'interface web nous avons utilisé les technologies HTML, CSS et JavaScript.

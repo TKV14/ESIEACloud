@@ -14,6 +14,7 @@ void encryptSha256(const char *chaine, const char *salt, const char *alea, char 
 	SHA256_Init(&ctx);
 
 	SHA256_Update(&ctx, buffer, strlen(buffer));
+	SHA256_Update(&ctx, SALT, strlen(SALT));
 	if(salt != NULL)
 		SHA256_Update(&ctx, salt, strlen(salt));
 	if(alea != NULL)

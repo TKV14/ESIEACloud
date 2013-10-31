@@ -8,6 +8,7 @@ void createCookie();
 void sendPage(char *page);
 void sendFile(FILE *file);
 void selectFile(char *filename);
+void deleteFile(char *filename);
 void sendHeader();
 void validAuth(char *authType);
 

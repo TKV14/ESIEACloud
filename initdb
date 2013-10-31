@@ -1,6 +1,6 @@
 ALTER USER postgres WITH PASSWORD 'postgres';
 CREATE TABLE users (login varchar(64) NOT NULL, password varchar(64) NOT NULL);
 CREATE TABLE sessions (idsession varchar(64) NOT NULL, login varchar(64) NOT NULL);
-INSERT INTO users VALUES ('Martin', 'd74ff0ee8da3b9806b18c877dbf29bbde50b5bd8e4dad7a3a725000feb82e8f1');
-INSERT INTO users VALUES ('user', 'ec9c3a34e791bda21bbcb69ea0eb875857497e0d48c75771b3d1adb5073ce791');
+INSERT INTO users VALUES ('Martin', '0f116161dfed4cb69f392f48d7fd7af6a3e1ffd4c6d6bb45678d0bd4d3fc8586');
+INSERT INTO users VALUES ('user', '2b248c4d364e7d0a30dbad9a779352b983be4f59b69f0a65bc14caa86b5aac4d');
 \q
