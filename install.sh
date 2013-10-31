@@ -21,5 +21,5 @@ sudo cp ./files/test.txt /ESIEACloud/user
 sudo chown -R www-data:www-data /ESIEACloud/Martin
 sudo chown -R www-data:www-data /ESIEACloud/user
 sudo service apache2 restart
-ADRESS=`ifconfig eth0 | grep "inet addr" | sed 's/.*addr:\([0-9]*\.[0-9]*\.[0-9]*\.[0-9]\).*/\1/'`
+ADRESS=`ifconfig eth0 | grep "inet addr" | sed 's/.*addr:\([0-9]*\.[0-9]*\.[0-9]*\.[0-9]*\).*/\1/'`
 eval echo "Site web installe a l\'adresse: \$ADRESS"
